@@ -1,10 +1,10 @@
 # MobileProgramming_TeamProject_3Team
-### 김동현
-### 박상문
-### 이재홍
-### 이호진
 
-기능
+김동현
+이재홍
+이호진
+
+#기능
 DATA.go.kr
 에서 API 데이터를 받아와서 처리하는 앱.
 
