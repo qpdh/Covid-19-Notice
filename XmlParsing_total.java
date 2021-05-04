@@ -19,9 +19,9 @@ public class XmlParsing_total {
 	        String result = eElement.getElementsByTagName(tag).item(0).getTextContent();
 	        return result;
 	    } catch(NullPointerException e){
-	        return "";
+	        return "NullPointer Error";
 	    } catch(Exception e){
-	        return "";
+	        return "Other Error";
 	    }
 	}
 	
@@ -35,8 +35,10 @@ public class XmlParsing_total {
 		
 		try {
 			
-			String url = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D&pageNo=1&numOfRows=1&startCreateDt="+startCreateDt+"&endCreateDt="+endCreateDt;
-
+			String ServiceKey = "rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D";
+			String url = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=" 
+			+ ServiceKey + "&pageNo=1&numOfRows=1&startCreateDt="+startCreateDt+"&endCreateDt="+endCreateDt;
+			
 			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 			Document doc = dBuilder.parse(url);

@@ -19,9 +19,9 @@ public class XmlParsing_city {
 	        String result = eElement.getElementsByTagName(tag).item(0).getTextContent();
 	        return result;
 	    } catch(NullPointerException e){
-	        return "";
+	        return "NullPointer Error";
 	    } catch(Exception e){
-	        return "";
+	        return "Other Error";
 	    }
 	}
 	
