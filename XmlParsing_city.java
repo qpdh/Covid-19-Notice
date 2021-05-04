@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -43,20 +44,21 @@ public class XmlParsing_city {
 			NodeList nList = doc.getElementsByTagName("item");
 			Node nNode = nList.item(0);
 			Element eElement_date = (Element) nNode;
+			DecimalFormat dc = new DecimalFormat("###,###,###,###");
+			
 
 			System.out.println("기준일 : " + getTagValue("stdDay", eElement_date));
 			
-			for(int temp = 1; temp < nList.getLength() - 1; temp++){		
+			for(int temp = 1; temp < nList.getLength(); temp++){		
 				nNode = nList.item(temp);
 				if(nNode.getNodeType() == Node.ELEMENT_NODE){
 									
 					Element eElement = (Element) nNode;
 					System.out.println("######################");
-					//System.out.println("기준일시 : " + getTagValue("stdDay", eElement));
-					System.out.println("시도명 : " + getTagValue("gubun", eElement));
-					System.out.println("누적 확진자 수  : " + getTagValue("defCnt", eElement));
-					System.out.println("사망자 수 : " + getTagValue("deathCnt", eElement));
-					System.out.println("전일대비 증감 수 : " + getTagValue("incDec", eElement));
+					System.out.println(getTagValue("gubun", eElement));
+					System.out.println("누적 확진자 수  : " + dc.format(Integer.parseInt(getTagValue("defCnt", eElement))));
+					System.out.println("사망자 수 : " + dc.format(Integer.parseInt(getTagValue("deathCnt", eElement))));
+					System.out.println("전일대비 증감 수 : " + dc.format(Integer.parseInt(getTagValue("incDec", eElement))));
 				}
 			}
 			

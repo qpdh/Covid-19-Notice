@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -29,7 +30,7 @@ public class XmlParsing_total {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
 		String today = sdf.format(date);
-		String startCreateDt = "20210401";
+		String startCreateDt = "20210401"; //tempdate
 		String endCreateDt = today;
 		
 		try {
@@ -41,6 +42,7 @@ public class XmlParsing_total {
 			Document doc = dBuilder.parse(url);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("item");
+			DecimalFormat dc = new DecimalFormat("###,###,###,###,###");
 			
 			for(int temp = 0; temp < nList.getLength(); temp++){		
 				Node nNode = nList.item(temp);
@@ -50,11 +52,11 @@ public class XmlParsing_total {
 					System.out.println("######################");
 					
 					System.out.println("기준일 : " + getTagValue("stateDt", eElement));
-					System.out.println("확진자 수 : " + getTagValue("decideCnt", eElement));
-					System.out.println("검사진행 수  : " + getTagValue("examCnt", eElement));
-					System.out.println("사망자 수 : " + getTagValue("deathCnt", eElement));
-					System.out.println("결과 음성 수 : " + getTagValue("resutlNegCnt", eElement));
-					System.out.println("누적검사 수  : " + getTagValue("accExamCnt", eElement));
+					System.out.println("확진자 수 : " + dc.format(Integer.parseInt(getTagValue("decideCnt", eElement))));
+					System.out.println("검사진행 수  : " + dc.format(Integer.parseInt(getTagValue("examCnt", eElement))));
+					System.out.println("사망자 수 : " + dc.format(Integer.parseInt(getTagValue("deathCnt", eElement))));
+					System.out.println("결과 음성 수 : " + dc.format(Integer.parseInt(getTagValue("resutlNegCnt", eElement))));
+					System.out.println("누적검사 수  : " + dc.format(Integer.parseInt(getTagValue("accExamCnt", eElement))));
 					System.out.println("누적환진률  : " + getTagValue("accDefRate", eElement));
 				}
 			}
