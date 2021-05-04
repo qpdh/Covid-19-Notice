@@ -22,13 +22,15 @@ public class XmlParsing_hospital {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-				String url = "http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey=rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D&pageNo=1&numOfRows=1&spclAdmTyCd=A0";
+				String spclAdmTyCd = "A0"; //기관코드 	A0: 국민안심병원 97: 코로나검사 실시기관 99: 코로나 선별진료소 운영기관
+				String url = "http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey=rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D&pageNo=1&numOfRows=1&spclAdmTyCd=" + spclAdmTyCd;
 				DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
 				DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
 				Document doc = dBuilder.parse(url);
 				NodeList nList1 = doc.getElementsByTagName("body");
 				Element eElement = (Element) nList1.item(0);
 				String getnum = getTagValue("totalCount", eElement);
+				System.out.println(getnum);
 				
 				url = "http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey=rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D&pageNo=1&numOfRows="+ getnum +"&spclAdmTyCd=A0";
 
