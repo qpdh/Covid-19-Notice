@@ -59,7 +59,7 @@
         </TableRow>
     </TableLayout>
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/datetoday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="12dp"

@@ -10,13 +10,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class RegionMap extends Activity {
     LinearLayout mapview;
     ImageView map;
     Button backBtn, syncBtn;
-    Covid_19_sido data = new Covid_19_sido();
+
+    Date date = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
+    String today = sdf.format(date);
+
+    Covid_19_sido data = new Covid_19_sido(today);
     ArrayList<InfectionByRegion> lable = new ArrayList<InfectionByRegion>();
     AsyncTask<Void, Void, ArrayList<InfectionByRegion>> thread = data.execute();
     @Override
