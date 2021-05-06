@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="지역별 보건소 검색"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="지역을 선택해주세요"
+                    android:textSize="20dp"
+                    android:gravity="center_vertical"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <Spinner
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.5"
+                        android:id="@+id/spinner"/>
+                    <Spinner
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.5"
+                        android:id="@+id/spinner2"
+                        android:spinnerMode="dialog"/>
+                </LinearLayout>
+            </LinearLayout>
+        <Button
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:id="@+id/btn_refresh"
+            android:text="검 색"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- 보건소 리스트 삽입 -->
+            <ListView
+                android:id="@+id/hospitalList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/hospitalBackBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_style"
+        android:text="나가기"/>
+</LinearLayout>
