@@ -1,6 +1,7 @@
 package kr.ac.kpu.se2017156030.mapdesign;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -9,16 +10,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class RegionMap extends Activity {
     LinearLayout mapview;
     ImageView map;
     Button backBtn, syncBtn;
+    Covid_19_sido data = new Covid_19_sido();
+    ArrayList<InfectionByRegion> lable = new ArrayList<InfectionByRegion>();
+    AsyncTask<Void, Void, ArrayList<InfectionByRegion>> thread = data.execute();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.region_map);
-        Covid_19_sido data = new Covid_19_sido();
 
+        TextView dateText = (TextView)findViewById(R.id.dateText);
         //정의
         LinearLayout layout_list[] = {
                 (LinearLayout)findViewById(R.id.quarantine_layout), //검역
@@ -83,10 +89,6 @@ public class RegionMap extends Activity {
         map = (ImageView)findViewById(R.id.map);
 
 
-
-        //최소 1회 강제 sync
-        syncBtn.performClick();
-
         //스마트폰의 높이, 너비 받아오기
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -106,12 +108,22 @@ public class RegionMap extends Activity {
         syncBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int k=0; k<data.rdata.size(); k++){
-                    total_confirmed[k].setText(data.rdata.get(k).def_cnt);
-                    daily_confirmed[k].setText(data.rdata.get(k).inc_dec);
+                try {
+                    lable = thread.get();
+                    dateText.setText(lable.get(0).stdDay);
+                    for (int k = 0; k < data.rdata.size(); k++) {
+                        total_confirmed[k].setText(lable.get(k).def_cnt);
+                        daily_confirmed[k].setText('+'+ lable.get(k).inc_dec);
+                    }
+
+                } catch (Exception e) {
+
                 }
             }
         });
+
+        //최소 1회 강제 sync
+        syncBtn.performClick();
 
         //종료
         backBtn.setOnClickListener(new View.OnClickListener() {

@@ -20,7 +20,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-public class Covid_19_sido extends AsyncTask<ArrayList<InfectionByRegion>, Void, Document> {
+public class Covid_19_sido extends AsyncTask<Void, Void, ArrayList<InfectionByRegion>> {
     private final String url;
     Date date = new Date();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
@@ -30,7 +30,7 @@ public class Covid_19_sido extends AsyncTask<ArrayList<InfectionByRegion>, Void,
     ArrayList<InfectionByRegion> rdata = new ArrayList<InfectionByRegion>();
 
     // 클래스 생성자 : URL 정리 초기화
-    Covid_19_sido() {
+    public Covid_19_sido() {
 
         URL url = null;
         try {
@@ -51,7 +51,7 @@ public class Covid_19_sido extends AsyncTask<ArrayList<InfectionByRegion>, Void,
     // 다큐먼트 만들기
     // doc 반환
     @Override
-    protected Document doInBackground(ArrayList<InfectionByRegion>... arrayLists) {
+    protected ArrayList<InfectionByRegion> doInBackground(Void ...voids) {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
         Document doc = null;
@@ -78,16 +78,16 @@ public class Covid_19_sido extends AsyncTask<ArrayList<InfectionByRegion>, Void,
             String gubun = getTagValue("gubun", eElement);
             String def_cnt = getTagValue("defCnt", eElement);
             String inc_cnt = getTagValue("incDec", eElement);
+            String std_day = getTagValue("stdDay", eElement);
 
-            rdata.add(new InfectionByRegion(gubun, def_cnt, inc_cnt));
+            rdata.add(new InfectionByRegion(gubun, def_cnt, inc_cnt, std_day));
         }
-
-        return doc;
+        return rdata;
     }
 
     @Override
-    protected void onPostExecute(Document doc) {
-        super.onPostExecute(doc);
+    protected void onPostExecute(ArrayList<InfectionByRegion> result) {
+        super.onPostExecute(result);
     }
 
     private static String getTagValue(String tag, Element eElement) {

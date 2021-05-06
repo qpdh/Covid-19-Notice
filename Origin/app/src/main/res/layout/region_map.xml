@@ -39,7 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0000년00월00일 기준"
-                    android:layout_x="12dp"/>
+                    android:layout_x="12dp"
+                    android:id="@+id/dateText"/>
 
                 <LinearLayout
                     android:id="@+id/incheon_layout"
