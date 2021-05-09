@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
         newsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent newsIntent = new Intent(getApplicationContext(), NewsUri.class);
-                //startActivity(NewsIntent);
-                Toast.makeText(getApplicationContext(), "아직 미구현이지만\n금방 만들어질 거예요 :)", Toast.LENGTH_SHORT).show();
+                //뉴스정보추가
+                Uri uri =Uri.parse("http://ncov.mohw.go.kr/tcmBoardList.do?brdId=&brdGubun=&dataGubun=&ncvContSeq=&contSeq=&board_id=&gubun=");
+                Intent intent=new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
     }
