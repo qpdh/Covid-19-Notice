@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
@@ -100,6 +101,18 @@ public class HospitalInformationActivity extends Activity {
             }
         });
 
+        try {
+            Field popup = Spinner.class.getDeclaredField("mPopup");
+            popup.setAccessible(true);
+
+            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(spin1);
+
+            popupWindow.setHeight(600);
+
+            popupWindow = (android.widget.ListPopupWindow)popup.get(spin2);
+            popupWindow.setHeight(600);
+
+        } catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {}
 //        //첫번째 스피너에 8도 배열 추가
 //        array1 = ArrayAdapter.createFromResource(this, R.array.spinner_do, android.R.layout.simple_spinner_dropdown_item);
 //        array1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -278,7 +291,7 @@ public class HospitalInformationActivity extends Activity {
                         String base2 = hospitalYadmNmArray[i];
                         Toast.makeText(getApplicationContext(), base2, Toast.LENGTH_SHORT).show();
 
-                        Uri uri = Uri.parse("tel:"+hospitalTelNo[i]);
+                        Uri uri = Uri.parse("tel:" + hospitalTelNo[i]);
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
                     }
