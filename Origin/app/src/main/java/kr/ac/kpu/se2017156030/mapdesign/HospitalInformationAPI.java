@@ -27,7 +27,7 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Hosp
         try {
             String ServiceKey = "re%2B4ZbFs0erT%2Bg5bW2VLp2lNnYogTrEt0R7QKSYaDpZh4g1hbkj8kgaNSL7JTXaXugynM9f8TSqjeODqtP9Dow%3D%3D";
             String url2 = "http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey="
-                    + ServiceKey + "&pageNo=1&numOfRows=40&spclAdmTyCd=" + "A0";
+                    + ServiceKey + "&pageNo=1&numOfRows=1500&spclAdmTyCd=99&spclAdmTyCd=97&spclAdmTyCd=A0" ;
 
             url = new URL(url2);
 
