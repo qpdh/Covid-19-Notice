@@ -4,10 +4,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button dailyBtn, regionBtn, hospitalBtn, newsBtn;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         dailyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent dailyIntent = new Intent(getApplicationContext(), DailyTotal.class);
+                Intent dailyIntent = new Intent(getApplicationContext(), InfectionByTotalActivity.class);
                 startActivity(dailyIntent);
             }
         });
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         regionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent regionIntent = new Intent(getApplicationContext(), RegionMap.class);
+                Intent regionIntent = new Intent(getApplicationContext(), InfectionByRegionActivity.class);
                 startActivity(regionIntent);
             }
         });
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         hospitalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent hospitalIntent = new Intent(getApplicationContext(), HospitalSelect.class);
+                Intent hospitalIntent = new Intent(getApplicationContext(), HospitalInformationActivity.class);
                 startActivity(hospitalIntent);
             }
         });

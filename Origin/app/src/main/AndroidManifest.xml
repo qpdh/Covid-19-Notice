@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegionMap" android:label="Regon Map"/>
-        <activity android:name=".HospitalSelect" android:label="Hospital Select"/>
-        <activity android:name=".DailyTotal" android:label="Daily Total"/>
+        <activity android:name=".InfectionByRegionActivity" android:label="Regon Map"/>
+        <activity android:name=".HospitalInformationActivity" android:label="Hospital Select"/>
+        <activity android:name=".InfectionByTotalActivity" android:label="Daily Total"/>
     </application>
 
 </manifest>
