@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
@@ -58,6 +59,20 @@ public class HospitalInformationActivity extends Activity {
         rbA0 = (RadioButton) findViewById(R.id.HA0);
         rb97 = (RadioButton) findViewById(R.id.H97);
         rb99 = (RadioButton) findViewById(R.id.H99);
+
+
+        try {
+            Field popup = Spinner.class.getDeclaredField("mPopup");
+            popup.setAccessible(true);
+
+            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(spin1);
+
+            popupWindow.setHeight(600);
+
+            popupWindow = (android.widget.ListPopupWindow)popup.get(spin2);
+            popupWindow.setHeight(400);
+
+        } catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {}
 
 
         AsyncTask<Void, Void, ArrayList<ArrayList<HospitalInformation>>> thread = data.execute();
