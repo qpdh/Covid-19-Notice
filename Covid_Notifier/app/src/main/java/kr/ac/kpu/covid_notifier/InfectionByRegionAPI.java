@@ -11,6 +11,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,15 +19,18 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class InfectionByRegionAPI extends AsyncTask<Void, Void, ArrayList<InfectionByRegion>> {
-    private final String url;
-    String startCreateDt;
-    String endCreateDt;
-    ArrayList<InfectionByRegion> rdata = new ArrayList<InfectionByRegion>();
+    private final String url;   //파싱할 url
+    String startCreateDt, endCreateDt;  //파싱 시작일과 종료일
+    ArrayList<InfectionByRegion> rdata = new ArrayList<InfectionByRegion>();    //지역별 확진자 현황을 담을 ArrayList
+    DecimalFormat dc = new DecimalFormat("###,###,###");    //숫자 자릿 수 표시
 
-    // 클래스 생성자 : URL 정리 초기화
+    //클래스 생성자
+    //url 지정 및 기준날짜 설정(앱 실행 날짜 기준)
     public InfectionByRegionAPI(String today) {
         startCreateDt = today;
         endCreateDt = today;
+
+        //url 지정
         URL url = null;
         try {
             String ServiceKey = "rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D";
@@ -42,15 +46,15 @@ public class InfectionByRegionAPI extends AsyncTask<Void, Void, ArrayList<Infect
     }
 
 
-    // 쓰레드 동작
-    // 다큐먼트 만들기
-    // doc 반환
+    //쓰레드 백그라운드 실행 동작 함수
+    //지역별 확진자 현황 ArrayList에 저장
     @Override
     protected ArrayList<InfectionByRegion> doInBackground(Void... voids) {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
         Document doc = null;
 
+        //xml 파싱
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(url);
@@ -63,28 +67,24 @@ public class InfectionByRegionAPI extends AsyncTask<Void, Void, ArrayList<Infect
             e.printStackTrace();
             Log.d("API", "IOException");
         }
-        //Document doc = dBuilder.parse(url.toString());
 
         NodeList nList = doc.getElementsByTagName("item");
 
+        //파싱한 데이터 저장
         for (int i = 0; i < nList.getLength(); i++) {
             Element eElement = (Element) nList.item(i);
 
-            String gubun = getTagValue("gubun", eElement);
-            String std_day = getTagValue("stdDay", eElement);
-            String def_cnt = getTagValue("defCnt", eElement);
-            String inc_cnt = getTagValue("incDec", eElement);
+            String gubun = getTagValue("gubun", eElement);  //시도명
+            String std_day = getTagValue("stdDay", eElement);   //기준일시
+            String def_cnt = dc.format(Integer.parseInt(getTagValue("defCnt", eElement)));  //확진자 수
+            String inc_cnt = dc.format(Integer.parseInt(getTagValue("incDec", eElement)));  //전일대비 증감 수
 
             rdata.add(new InfectionByRegion(gubun, std_day, def_cnt, inc_cnt));
         }
         return rdata;
     }
 
-    @Override
-    protected void onPostExecute(ArrayList<InfectionByRegion> result) {
-        super.onPostExecute(result);
-    }
-
+    //xml에서 tag값에 해당하는 데이터를 파싱하는 함수
     private static String getTagValue(String tag, Element eElement) {
         try {
             String result = eElement.getElementsByTagName(tag).item(0).getTextContent();

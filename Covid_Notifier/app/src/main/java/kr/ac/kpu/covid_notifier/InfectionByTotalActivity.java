@@ -14,6 +14,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public class InfectionByTotalActivity extends Activity {
     InfectionByTotalAPI data = new InfectionByTotalAPI();
     ArrayList<InfectionByTotal> lable = new ArrayList<InfectionByTotal>();
     AsyncTask<Void, Void, ArrayList<InfectionByTotal>> thread = data.execute();
+    DecimalFormat dc = new DecimalFormat("###,###,###");    //숫자 자릿 수 표시
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,8 @@ public class InfectionByTotalActivity extends Activity {
 
         try {
             lable = thread.get();
-            daily_confirmed.setText(lable.get(0).decide_cnt);
-            daily_increse.setText(Integer.toString(Integer.parseInt(lable.get(0).decide_cnt) - Integer.parseInt(lable.get(1).decide_cnt)));
+            daily_confirmed.setText(dc.format(Integer.parseInt((lable.get(0).decide_cnt))));
+            daily_increse.setText(dc.format(Integer.parseInt(lable.get(0).decide_cnt) - Integer.parseInt(lable.get(1).decide_cnt)));
             dateset.setText(lable.get(0).state_dt);
 
             for (int i = lable.size() - 1; i > 0; i--) {

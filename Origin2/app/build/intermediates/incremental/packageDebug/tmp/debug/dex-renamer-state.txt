@@ -1,0 +1,4 @@
+#Tue May 11 18:50:50 KST 2021
+base.0=C\:\\Users\\tkdan\\updoor\\Origin\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

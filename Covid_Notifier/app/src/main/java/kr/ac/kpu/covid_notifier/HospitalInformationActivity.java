@@ -108,8 +108,6 @@ public class HospitalInformationActivity extends Activity {
             }
         });
 
-        rbA0.performClick();
-
         //보건소 리스트 불러오기(파일)  나중에 try catch 처리해서 없으면 보건소 없음 표시
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
