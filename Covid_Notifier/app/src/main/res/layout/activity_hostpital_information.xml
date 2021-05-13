@@ -2,21 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/hospitalBackBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/back"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="지역별 보건소 검색"
+            android:textColor="@color/black"
+            android:paddingRight="40dp"
+            android:textSize="30sp"
+            android:gravity="center"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="지역별 보건소 검색"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:gravity="center"/>
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -88,7 +100,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_style">
             <!-- 보건소 리스트 삽입 -->
             <ListView
                 android:id="@+id/hospitalList"
@@ -97,12 +111,5 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/hospitalBackBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_style"
-        android:text="나가기" />
+
 </LinearLayout>

@@ -111,7 +111,7 @@ public class InfectionByTotalActivity extends Activity {
             entries.add(new BarEntry((Integer) valList.get(i), i));
         }
 
-        BarDataSet depenses = new BarDataSet(entries, "확진자 추이");
+        BarDataSet depenses = new BarDataSet(entries, "");
         depenses.setAxisDependency(YAxis.AxisDependency.LEFT);
 
 

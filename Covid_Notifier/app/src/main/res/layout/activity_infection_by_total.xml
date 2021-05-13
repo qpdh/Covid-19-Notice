@@ -2,33 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="일일 확진자 현황"
-        android:textColor="@color/black"
-        android:textSize="30dp" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/dailyBackBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start"
+            android:background="@drawable/back"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="확진자 일일 현황"
+            android:gravity="center"
+            android:paddingRight="40dp"
+            android:textSize="30sp"/>
+    </LinearLayout>
+
 
     <!-- 일일 현황표 -->
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_margin="10dp">
 
-        <TableRow>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="일일 확진자"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
+        <LinearLayout
+            android:background="@drawable/background_daily"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="1dp">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/confirmed"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
             <TextView
                 android:id="@+id/total_daily_confirmed"
                 android:layout_width="match_parent"
@@ -37,20 +54,32 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="000000"
-                android:textSize="20dp" />
-        </TableRow>
-
-        <TableRow>
-
+                android:textStyle="bold"
+                android:textSize="30dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="전일대비 증감"
+                android:text="일일 확진자"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/background_daily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="1dp">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/daily_increse"
@@ -60,9 +89,19 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="000000"
-                android:textSize="20dp" />
-        </TableRow>
-    </TableLayout>
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="전일대비 증감"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/datetoday"
@@ -70,10 +109,30 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:text="0000년 00월 00일 기준"
-        android:textSize="12dp" />
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/graph_color"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일별 신규 확진자수"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+    </LinearLayout>
 
     <!-- 그래프 그리는곳 -->
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
@@ -85,16 +144,6 @@
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/chart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp" />
+            android:layout_height="match_parent"/>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/dailyBackBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_style"
-        android:text="BACK" />
 </LinearLayout>

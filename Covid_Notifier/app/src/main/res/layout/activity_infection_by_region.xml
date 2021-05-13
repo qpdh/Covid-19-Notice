@@ -4,14 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".MainActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="지역별 확진자 현황"
-        android:textColor="@color/black"
-        android:textSize="30dp" />
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/regionBackBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="지역별 확진자 현황"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:paddingRight="40dp"
+            android:textSize="30sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/frame"
@@ -48,8 +61,8 @@
                     android:id="@+id/incheon_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="50dp"
-                    android:layout_y="90dp"
+                    android:layout_x="37dp"
+                    android:layout_y="76dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -169,7 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_x="240dp"
-                    android:layout_y="80dp"
+                    android:layout_y="60dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -208,8 +221,8 @@
                     android:id="@+id/chungbuk_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="200dp"
-                    android:layout_y="160dp"
+                    android:layout_x="217dp"
+                    android:layout_y="136dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -288,8 +301,8 @@
                     android:id="@+id/chungnam_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="55dp"
-                    android:layout_y="240dp"
+                    android:layout_x="27dp"
+                    android:layout_y="222dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -328,8 +341,8 @@
                     android:id="@+id/daejeon_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="180dp"
-                    android:layout_y="230dp"
+                    android:layout_x="188dp"
+                    android:layout_y="217dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -368,8 +381,8 @@
                     android:id="@+id/gyeongbuk_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="270dp"
-                    android:layout_y="195dp"
+                    android:layout_x="312dp"
+                    android:layout_y="182dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -408,8 +421,8 @@
                     android:id="@+id/jeonbuk_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="120dp"
-                    android:layout_y="300dp"
+                    android:layout_x="118dp"
+                    android:layout_y="284dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -448,8 +461,8 @@
                     android:id="@+id/daegu_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="280dp"
-                    android:layout_y="270dp"
+                    android:layout_x="262dp"
+                    android:layout_y="249dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -488,8 +501,8 @@
                     android:id="@+id/gyeongnam_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="210dp"
-                    android:layout_y="360dp"
+                    android:layout_x="197dp"
+                    android:layout_y="324dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -528,8 +541,8 @@
                     android:id="@+id/busan_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="310dp"
-                    android:layout_y="415dp"
+                    android:layout_x="276dp"
+                    android:layout_y="383dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -568,8 +581,8 @@
                     android:id="@+id/ulsan_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="335dp"
-                    android:layout_y="340dp"
+                    android:layout_x="320dp"
+                    android:layout_y="311dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -608,8 +621,8 @@
                     android:id="@+id/jeonnam_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="55dp"
-                    android:layout_y="420dp"
+                    android:layout_x="26dp"
+                    android:layout_y="409dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -648,8 +661,8 @@
                     android:id="@+id/gwangju_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="130dp"
-                    android:layout_y="390dp"
+                    android:layout_x="117dp"
+                    android:layout_y="372dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -688,8 +701,8 @@
                     android:id="@+id/jeju_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="135dp"
-                    android:layout_y="480dp"
+                    android:layout_x="117dp"
+                    android:layout_y="461dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -728,8 +741,8 @@
                     android:id="@+id/quarantine_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="240dp"
-                    android:layout_y="480dp"
+                    android:layout_x="226dp"
+                    android:layout_y="454dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -770,8 +783,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="10dp">
 
         <Button
             android:id="@+id/syncBtn"
@@ -783,17 +795,6 @@
             android:background="@drawable/btn_style"
             android:text="SYNC" />
 
-        <Button
-            android:id="@+id/regionBackBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_style"
-            android:text="Back"
-
-            android:textColor="@color/black" />
     </LinearLayout>
 
 
