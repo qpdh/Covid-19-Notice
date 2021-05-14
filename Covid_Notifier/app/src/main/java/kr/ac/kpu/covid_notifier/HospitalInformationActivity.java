@@ -2,6 +2,7 @@ package kr.ac.kpu.covid_notifier;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.nfc.cardemulation.HostApduService;
 import android.os.AsyncTask;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -31,15 +33,17 @@ import java.util.concurrent.ExecutionException;
 
 public class HospitalInformationActivity extends Activity {
     private static String TAG = "check";
-    String choice_do = "";
-    String choice_se = "";
+
     Button searchBtn, backBtn;
     Spinner spin1, spin2;
     ArrayAdapter<String> array1, array2;
     ListView hospitalList;
-    RadioButton rbA0, rb97, rb99;
+    RadioButton rbA0;
+    RadioGroup radioGroupHospital;
 
-    HashMap<String, ArrayList<HospitalInformation>> hospitalInfromationDict;
+    HashMap<HashSet<String>, ArrayList<HospitalInformation>> hospitalInformationDict;
+
+    //  HashMap<String, ArrayList<HospitalInformation>> hospitalInfromationDict;
     TreeMap<String, TreeSet<String>> sgguNmDict;
 
     ArrayList<ArrayList<HospitalInformation>> lable = new ArrayList<ArrayList<HospitalInformation>>();
@@ -57,10 +61,11 @@ public class HospitalInformationActivity extends Activity {
         hospitalList = (ListView) findViewById(R.id.hospitalList);
         backBtn = (Button) findViewById(R.id.hospitalBackBtn);
         rbA0 = (RadioButton) findViewById(R.id.HA0);
-        rb97 = (RadioButton) findViewById(R.id.H97);
-        rb99 = (RadioButton) findViewById(R.id.H99);
+//        rb97 = (RadioButton) findViewById(R.id.H97);
+//        rb99 = (RadioButton) findViewById(R.id.H99);
+        radioGroupHospital = (RadioGroup) findViewById(R.id.radioGroupHospital);
 
-
+        // 스피너 너비 조정
         try {
             Field popup = Spinner.class.getDeclaredField("mPopup");
             popup.setAccessible(true);
@@ -69,15 +74,17 @@ public class HospitalInformationActivity extends Activity {
 
             popupWindow.setHeight(600);
 
-            popupWindow = (android.widget.ListPopupWindow)popup.get(spin2);
+            popupWindow = (android.widget.ListPopupWindow) popup.get(spin2);
             popupWindow.setHeight(400);
 
-        } catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {}
+        } catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
+        }
 
 
+        // 데이터 가져오기
         AsyncTask<Void, Void, ArrayList<ArrayList<HospitalInformation>>> thread = data.execute();
 
-        try{
+        try {
             lable = thread.get();
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -85,43 +92,51 @@ public class HospitalInformationActivity extends Activity {
             e.printStackTrace();
         }
 
+        // 라디오 그룹 버튼이 변경되면 데이터 불러오기
+        radioGroupHospital.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.HA0:
+                        divide(0);
+                        spinner();
+                        searchBtn.performClick();
+                        break;
 
-        rbA0.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                divide(0);
-                spinner();
-                searchBtn.performClick();
+                    case R.id.H97:
+                        divide(1);
+                        spinner();
+                        searchBtn.performClick();
+                        break;
+
+                    case R.id.H99:
+                        divide(2);
+                        spinner();
+                        searchBtn.performClick();
+                        break;
+                }
             }
         });
-        rb97.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                divide(1);
-                spinner();
-                searchBtn.performClick();
-            }
-        });
-        rb99.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                divide(2);
-                spinner();
-                searchBtn.performClick();
-            }
-        });
 
-        rbA0.performClick();
-
-        //보건소 리스트 불러오기(파일)  나중에 try catch 처리해서 없으면 보건소 없음 표시
+        //보건소 리스트 불러오기
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    String base = spin2.getSelectedItem().toString();
-                    String hospitalYadmNmArray[] = new String[hospitalInfromationDict.get(base).size()];
-                    String hospitalTelNo[] = new String[hospitalInfromationDict.get(base).size()];
+                try {
+                    String spin1Item = spin1.getSelectedItem().toString();
+                    String spin2Item = spin2.getSelectedItem().toString();
 
-                    for (int i = 0; i < hospitalInfromationDict.get(base).size(); i++) {
-                        hospitalYadmNmArray[i] = hospitalInfromationDict.get(base).get(i).yadmNm;
-                        hospitalTelNo[i] = hospitalInfromationDict.get(base).get(i).telno;
+                    HashSet<String> iterSet = new HashSet<String>();
+                    iterSet.add(spin1Item);
+                    iterSet.add(spin2Item);
+
+                    String hospitalYadmNmArray[] = new String[hospitalInformationDict.get(iterSet).size()];
+                    Log.d("SEARCHBTN", Integer.toString(hospitalYadmNmArray.length));
+                    String hospitalTelNo[] = new String[hospitalInformationDict.get(iterSet).size()];
+
+                    for (int i = 0; i < hospitalInformationDict.get(iterSet).size(); i++) {
+                        hospitalYadmNmArray[i] = hospitalInformationDict.get(iterSet).get(i).yadmNm;
+                        hospitalTelNo[i] = hospitalInformationDict.get(iterSet).get(i).telno;
                     }
 
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, hospitalYadmNmArray);
@@ -134,7 +149,7 @@ public class HospitalInformationActivity extends Activity {
                             String base2 = hospitalYadmNmArray[i];
                             Toast.makeText(getApplicationContext(), base2, Toast.LENGTH_SHORT).show();
 
-                            Uri uri = Uri.parse("tel:"+hospitalTelNo[i]);
+                            Uri uri = Uri.parse("tel:" + hospitalTelNo[i]);
                             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                             startActivity(intent);
                         }
@@ -144,182 +159,6 @@ public class HospitalInformationActivity extends Activity {
             }
         });
 
-        /*try {
-            lable = thread.get();
-
-            for (int i = 0; i < lable.size(); i++) {
-                for(int j = 0; j < lable.get(i).size(); j++){
-                    if (sgguNmDict.get(lable.get(i).sidoNm) == null) {
-                        sgguNmDict.put(lable.get(i).sidoNm, new TreeSet<String>());
-                    }
-                    if (hospitalInfromationDict.get(lable.get(i).sgguNm) == null) {
-                        hospitalInfromationDict.put(lable.get(i).sgguNm, new ArrayList<HospitalInformation>());
-                    }
-
-                    TreeSet<String> tmp = sgguNmDict.get(lable.get(i).sidoNm);
-                    ArrayList<HospitalInformation> tmp2 = hospitalInfromationDict.get(lable.get(i).sgguNm);
-
-                    tmp.add(lable.get(i).sgguNm);
-                    tmp2.add(lable.get(i));
-                }
-
-            }
-
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-
-
-
-//        //첫번째 스피너에 8도 배열 추가
-//        array1 = ArrayAdapter.createFromResource(this, R.array.spinner_do, android.R.layout.simple_spinner_dropdown_item);
-//        array1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spin1.setAdapter(array1);
-//
-//        //두번째 스피너에 시군구 배열 추가
-//        spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                switch (array1.getItem(i).toString()) {
-//                    case "강원":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_gangwon, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    case "경기":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_gyeonggi, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    case "경남":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_gyeongnam, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    case "경북":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_gyeongbuk, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    case "광주":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_gwangju, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    case "대전":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_daejeon, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    case "부산":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_busan, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    case "서울":
-//                        choice_do = array1.getItem(i).toString();
-//                        array2 = ArrayAdapter.createFromResource(HospitalInformationActivity.this, R.array.spinner_seoul, android.R.layout.simple_spinner_dropdown_item);
-//                        array2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                        spin2.setAdapter(array2);
-//                        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                choice_se = array2.getItem(i).toString();
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                            }
-//                        });
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//            }
-//        });
         //종료
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,25 +168,50 @@ public class HospitalInformationActivity extends Activity {
         });
 
 
+        // A0 선택되고 시작
+        rbA0.setChecked(true);
+
     }
-    private void divide(int k){
-        hospitalInfromationDict = new HashMap<String, ArrayList<HospitalInformation>>();
+
+    private void divide(int k) {
+//        hospitalInfromationDict = new HashMap<String, ArrayList<HospitalInformation>>();
+
+        hospitalInformationDict = new HashMap<HashSet<String>, ArrayList<HospitalInformation>>();
+
         sgguNmDict = new TreeMap<String, TreeSet<String>>();
-        for( int j=0; j< lable.get(k).size(); j++){
-            if (sgguNmDict.get(lable.get(k).get(j).sidoNm) == null) {
-                sgguNmDict.put(lable.get(k).get(j).sidoNm, new TreeSet<String>());
-            }
-            if (hospitalInfromationDict.get(lable.get(k).get(j).sgguNm) == null) {
-                hospitalInfromationDict.put(lable.get(k).get(j).sgguNm, new ArrayList<HospitalInformation>());
+
+        for (int j = 0; j < lable.get(k).size(); j++) {
+            HospitalInformation iter = lable.get(k).get(j);
+
+            // (시도, 시군구) 세트
+            HashSet<String> iterSet = new HashSet<String>();
+            iterSet.add(iter.sidoNm);
+            iterSet.add(iter.sgguNm);
+
+            if (sgguNmDict.get(iter.sidoNm) == null) {
+                sgguNmDict.put(iter.sidoNm, new TreeSet<String>());
             }
 
-            TreeSet<String> tmp = sgguNmDict.get(lable.get(k).get(j).sidoNm);
-            ArrayList<HospitalInformation> tmp2 = hospitalInfromationDict.get(lable.get(k).get(j).sgguNm);
-            tmp.add(lable.get(k).get(j).sgguNm);
-            tmp2.add(lable.get(k).get(j));
+            if (hospitalInformationDict.get(iterSet) == null) {
+                hospitalInformationDict.put(iterSet, new ArrayList<HospitalInformation>());
+            }
+
+//            if (hospitalInfromationDict.get(iter.sgguNm) == null) {
+//                hospitalInfromationDict.put(iter.sgguNm, new ArrayList<HospitalInformation>());
+//            }
+
+            hospitalInformationDict.get(iterSet).add(iter);
+            sgguNmDict.get(iter.sidoNm).add(iter.sgguNm);
+
+//            // 스피너에 넣을 TreeSet (시군구)
+//            TreeSet<String> tmp = sgguNmDict.get(iter.sidoNm);
+//            ArrayList<HospitalInformation> tmp2 = hospitalInfromationDict.get(iter.sgguNm);
+//            tmp.add(lable.get(k).get(j).sgguNm);
+//            tmp2.add(lable.get(k).get(j));
         }
     }
-    private void spinner(){
+
+    private void spinner() {
         array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
         spin1.setAdapter(array1);
 

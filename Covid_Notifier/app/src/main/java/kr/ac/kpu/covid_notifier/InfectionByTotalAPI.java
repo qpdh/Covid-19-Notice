@@ -22,21 +22,23 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class InfectionByTotalAPI extends AsyncTask<Void, Void, ArrayList<InfectionByTotal>> {
-    private final String url;
+    private final String url;   //파싱할 url
+    String startCreateDt, endCreateDt;  //파싱 시작일과 종료일
+    ArrayList<InfectionByTotal> rdata = new ArrayList<InfectionByTotal>();  //해당 날짜 확진자 현황을 담을 ArrayList
 
-    ArrayList<InfectionByTotal> rdata = new ArrayList<InfectionByTotal>();
-
+    //클래스 생성자
+    //url 지정 및 기준날짜 설정(앱 실행 날짜 기준 7일)
     public InfectionByTotalAPI(){
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
-
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
 
-        String endCreateDt = sdf.format(cal.getTime());
-
+        //날짜 1주일 설정
+        endCreateDt = sdf.format(cal.getTime());
         cal.add(Calendar.DATE,-7);
-        String startCreateDt = sdf.format(cal.getTime());
+        startCreateDt = sdf.format(cal.getTime());
 
+        //url 지정
         URL url = null;
         try {
             String ServiceKey = "rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D";
@@ -50,12 +52,16 @@ public class InfectionByTotalAPI extends AsyncTask<Void, Void, ArrayList<Infecti
         }
         this.url = url.toString();
     }
+
+    //쓰레드 백그라운드 실행 동작
+    //해당 날짜 확진자 현황 ArrayList에 저장
     @Override
     protected ArrayList<InfectionByTotal> doInBackground(Void ...voids){
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
         Document doc = null;
 
+        //xml 파싱
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(url);
@@ -68,26 +74,22 @@ public class InfectionByTotalAPI extends AsyncTask<Void, Void, ArrayList<Infecti
             e.printStackTrace();
             Log.d("API", "IOException");
         }
-        //Document doc = dBuilder.parse(url.toString());
 
         NodeList nList = doc.getElementsByTagName("item");
 
+        //파싱한 데이터 저장
         for (int i = 0; i < nList.getLength(); i++) {
             Element eElement = (Element) nList.item(i);
 
-            String state_dt = getTagValue("stateDt", eElement);
-            String decide_cnt = getTagValue("decideCnt", eElement);
+            String state_dt = getTagValue("stateDt", eElement); //기준일
+            String decide_cnt = getTagValue("decideCnt", eElement); //확진자 수
 
             rdata.add(new InfectionByTotal(state_dt, decide_cnt));
         }
         return rdata;
     }
 
-    @Override
-    protected void onPostExecute(ArrayList<InfectionByTotal> result) {
-        super.onPostExecute(result);
-    }
-
+    //xml에서 tag값에 해당하는 데이터를 파싱하는 함수
     private static String getTagValue(String tag, Element eElement) {
         try {
             String result = eElement.getElementsByTagName(tag).item(0).getTextContent();
