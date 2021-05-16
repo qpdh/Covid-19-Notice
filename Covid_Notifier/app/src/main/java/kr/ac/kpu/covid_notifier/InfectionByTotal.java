@@ -10,8 +10,6 @@ package kr.ac.kpu.covid_notifier;
 public class InfectionByTotal {
     String state_dt;
     String decide_cnt;
-    String death_cnt;
-    String clear_cnt;
 
     InfectionByTotal(String state_dt, String decide_cnt) {
         this.state_dt = state_dt;

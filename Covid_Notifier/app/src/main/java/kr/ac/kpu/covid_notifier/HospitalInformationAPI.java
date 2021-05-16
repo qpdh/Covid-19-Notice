@@ -18,14 +18,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<ArrayList<HospitalInformation>>> {
-    private final String url;
+    private final String url;   //파싱할 url
+    ArrayList<ArrayList<HospitalInformation>> rdata = new ArrayList<ArrayList<HospitalInformation>>();  //각 기관별 ArrayList를 저장할 ArrayList
+    ArrayList<HospitalInformation> CA0 = new ArrayList<HospitalInformation>();  //코드 A0에 해당하는 기관의 정보를 저장하는 ArrayList
+    ArrayList<HospitalInformation> C97 = new ArrayList<HospitalInformation>();  //코드 97에 해당하는 기관의 정보를 저장하는 ArrayList
+    ArrayList<HospitalInformation> C99 = new ArrayList<HospitalInformation>();  //코드 99에 해당하는 기관의 정보를 저장하는 ArrayList
 
-    ArrayList<ArrayList<HospitalInformation>> rdata = new ArrayList<ArrayList<HospitalInformation>>();
-    ArrayList<HospitalInformation> CA0 = new ArrayList<HospitalInformation>();
-    ArrayList<HospitalInformation> C97 = new ArrayList<HospitalInformation>();
-    ArrayList<HospitalInformation> C99 = new ArrayList<HospitalInformation>();
-
-    // 클래스 생성자 : URL 정리 초기화
+    //클래스 생성자
+    //url 지정 및 기관 리스트 조회
     public HospitalInformationAPI() {
         URL url = null;
         try {
@@ -41,16 +41,15 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
         this.url = url.toString();
     }
 
-
-    // 쓰레드 동작
-    // 다큐먼트 만들기
-    // doc 반환
+    //쓰레드 백그라운드 실행 동작 함수
+    //기관 종류에 해당하는 지역별 기관 각 ArrayList에 저장
     @Override
     protected ArrayList<ArrayList<HospitalInformation>> doInBackground(Void ... voids) {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
         Document doc = null;
 
+        //xml 파싱
         try {
             dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(url);
@@ -63,19 +62,19 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
             e.printStackTrace();
             Log.d("API", "IOException");
         }
-        //Document doc = dBuilder.parse(url.toString());
 
         NodeList nList = doc.getElementsByTagName("item");
 
+        //파싱한 데이터 저장
         for (int i = 0; i < nList.getLength(); i++) {
             Element eElement = (Element) nList.item(i);
 
-            String sidoNm = getTagValue("sidoNm", eElement);
-            String sgguNm = getTagValue("sgguNm", eElement);
-            sgguNm = sgguNm.split(" ")[0];
-            String code = getTagValue("spclAdmTyCd", eElement);
-            String telno = getTagValue("telno", eElement);
-            String yadmNm = getTagValue("yadmNm", eElement);
+            String sidoNm = getTagValue("sidoNm", eElement);    //시도명
+            String sgguNm = getTagValue("sgguNm", eElement);    //시군구명
+            sgguNm = sgguNm.split(" ")[0];                    //시군구 앞단위만 자름
+            String code = getTagValue("spclAdmTyCd", eElement); //기관 코드 A0 : 국민안심병원/ 97 : 코로나검사 실시기관/ 99 : 코로나 선별진료소 운영기관
+            String telno = getTagValue("telno", eElement);      //전화번호
+            String yadmNm = getTagValue("yadmNm", eElement);    //기관명
 
             switch (code){
                 case "A0":
@@ -95,11 +94,7 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
         return rdata;
     }
 
-    @Override
-    protected void onPostExecute(ArrayList<ArrayList<HospitalInformation>> result) {
-        super.onPostExecute(result);
-    }
-
+    //xml에서 tag값에 해당하는 데이터를 파싱하는 함수
     private static String getTagValue(String tag, Element eElement) {
         try {
             String result = eElement.getElementsByTagName(tag).item(0).getTextContent();

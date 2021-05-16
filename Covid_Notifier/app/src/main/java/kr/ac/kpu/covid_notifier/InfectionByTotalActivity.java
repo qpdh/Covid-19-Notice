@@ -51,7 +51,7 @@ public class InfectionByTotalActivity extends Activity {
             lable = thread.get();
             daily_confirmed.setText(dc.format(Integer.parseInt((lable.get(0).decide_cnt))));
             daily_increse.setText(dc.format(Integer.parseInt(lable.get(0).decide_cnt) - Integer.parseInt(lable.get(1).decide_cnt)));
-            dateset.setText(lable.get(0).state_dt);
+            dateset.setText("기준일 : " + lable.get(0).state_dt);
 
             for (int i = lable.size() - 1; i > 0; i--) {
                 SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");

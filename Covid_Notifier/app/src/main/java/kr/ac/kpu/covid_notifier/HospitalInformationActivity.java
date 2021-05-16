@@ -116,21 +116,18 @@ public class HospitalInformationActivity extends Activity {
                         divide(0);
                         spinner();
                         hospitalList.setAdapter(null);
-                        //searchBtn.performClick();
                         break;
 
                     case R.id.H97:
                         divide(1);
                         spinner();
                         hospitalList.setAdapter(null);
-                        //searchBtn.performClick();
                         break;
 
                     case R.id.H99:
                         divide(2);
                         spinner();
                         hospitalList.setAdapter(null);
-                        //searchBtn.performClick();
                         break;
                 }
             }
