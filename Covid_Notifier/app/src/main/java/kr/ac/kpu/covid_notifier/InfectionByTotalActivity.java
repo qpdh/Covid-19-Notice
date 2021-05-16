@@ -1,3 +1,7 @@
+////////////////////////////
+// 전체 일일 현황 액티비티 //
+///////////////////////////
+
 package kr.ac.kpu.covid_notifier;
 
 import android.app.Activity;
@@ -38,9 +42,11 @@ public class InfectionByTotalActivity extends Activity {
         daily_confirmed = (TextView) findViewById(R.id.total_daily_confirmed);
         daily_increse = (TextView) findViewById(R.id.daily_increse);
         dateset = (TextView) findViewById(R.id.datetoday);
+
         ArrayList<String> labels = new ArrayList<>();
         ArrayList<Integer> values = new ArrayList<>();
 
+        // API로부터 데이터 가져오기
         try {
             lable = thread.get();
             daily_confirmed.setText(dc.format(Integer.parseInt((lable.get(0).decide_cnt))));
@@ -56,36 +62,8 @@ public class InfectionByTotalActivity extends Activity {
                 values.add(Integer.parseInt(lable.get(i - 1).decide_cnt) - Integer.parseInt(lable.get(i).decide_cnt));
             }
             BarChartGraph(labels, values);
-        } catch (Exception e) {
+        } catch (Exception e) {}
 
-        }
-
-
-
-        //확진자 현황 불러오기
-        //당일 기준 전체 확진자수
-        //daily_increse = ;  //전일대비 증감
-        //date = ;  //기준일
-
-        //BarChart 데이터 삽입
-
-        /*
-        labels.add("05.01");
-        labels.add("05.02");
-        labels.add("05.03");
-        labels.add("05.04");
-        labels.add("05.05");
-        labels.add("05.06");
-        labels.add("05.07");
-
-        values.add(100);
-        values.add(276);
-        values.add(350);
-        values.add(420);
-        values.add(566);
-        values.add(648);
-        values.add(400);
-        */
 
         //종료
         backBtn.setOnClickListener(new View.OnClickListener() {
