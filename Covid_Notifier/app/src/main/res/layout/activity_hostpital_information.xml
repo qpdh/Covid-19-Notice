@@ -30,7 +30,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center"
+>
 
         <RadioGroup
             android:id="@+id/radioGroupHospital"
@@ -40,21 +42,24 @@
 
             <RadioButton
                 android:id="@+id/HA0"
+                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="국민안심병원" />
 
             <RadioButton
                 android:id="@+id/H97"
+                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="코로나검사 실시기관" />
+                android:text="검사 실시기관" />
 
             <RadioButton
                 android:id="@+id/H99"
+                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="코로나 선별진료소" />
+                android:text="선별진료소" />
         </RadioGroup>
 
         <LinearLayout
@@ -74,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:text="지역을 선택해주세요"
                     android:textSize="20dp" />
 
@@ -116,6 +121,4 @@
                 android:layout_height="match_parent"></ListView>
         </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>

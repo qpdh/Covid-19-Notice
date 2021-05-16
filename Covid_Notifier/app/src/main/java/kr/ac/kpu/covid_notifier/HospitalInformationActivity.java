@@ -104,30 +104,33 @@ public class HospitalInformationActivity extends Activity {
     // radioGroupHospital
     // searchBtn
     // backBtn
-    private void setActionListeners(){
+    private void setActionListeners() {
         // 라디오 그룹 버튼이 변경되면 데이터 불러오기
         radioGroupHospital.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                Log.d(TAG,"radioGroupHospital onCheckedChanged 호출");
+                Log.d(TAG, "radioGroupHospital onCheckedChanged 호출");
 
                 switch (i) {
                     case R.id.HA0:
                         divide(0);
                         spinner();
-                        searchBtn.performClick();
+                        hospitalList.setAdapter(null);
+                        //searchBtn.performClick();
                         break;
 
                     case R.id.H97:
                         divide(1);
                         spinner();
-                        searchBtn.performClick();
+                        hospitalList.setAdapter(null);
+                        //searchBtn.performClick();
                         break;
 
                     case R.id.H99:
                         divide(2);
                         spinner();
-                        searchBtn.performClick();
+                        hospitalList.setAdapter(null);
+                        //searchBtn.performClick();
                         break;
                 }
             }
@@ -143,6 +146,16 @@ public class HospitalInformationActivity extends Activity {
                     // spin2Item : 시/군/구 선택 스피너
                     String spin1Item = spin1.getSelectedItem().toString();
                     String spin2Item = spin2.getSelectedItem().toString();
+
+                    if(spin1Item.equals("시/도")){
+                        Toast.makeText(getApplicationContext(),"시/도 를 선택해주세요.",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if(spin2Item.equals("시/군/구")){
+                        Toast.makeText(getApplicationContext(),"시/군/구 를 선택해주세요.",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
                     HashSet<String> iterSet = new HashSet<String>();
                     iterSet.add(spin1Item);
@@ -225,7 +238,10 @@ public class HospitalInformationActivity extends Activity {
 
     // 스피너 목록 설정하는 메소드
     private void spinner() {
-        array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
+        array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
+        array1.add("시/도");
+        array1.addAll(sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
+        //array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
 
         spin1.setAdapter(array1);
 
@@ -233,20 +249,27 @@ public class HospitalInformationActivity extends Activity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (i > 0) {
+                    String sidoNm = array1.getItem(i);
+                    Log.d(TAG, sidoNm);
+                    for (String k : sgguNmDict.get(sidoNm)) {
+                        Log.d(TAG, k);
+                    }
 
-                String sidoNm = array1.getItem(i);
-                Log.d(TAG, sidoNm);
-                for (String k : sgguNmDict.get(sidoNm)) {
-                    Log.d(TAG, k);
+                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item);
+                    array2.add("시/군/구");
+                    array2.addAll(sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
+                    //array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
+                    spin2.setAdapter(array2);
+                } else {
+                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item);
+                    array2.add("시/군/구");
+                    spin2.setAdapter(array2);
                 }
-
-                array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
-                spin2.setAdapter(array2);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
     }
 }
