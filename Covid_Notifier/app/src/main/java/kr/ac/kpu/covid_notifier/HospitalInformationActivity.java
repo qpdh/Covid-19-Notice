@@ -7,11 +7,13 @@ package kr.ac.kpu.covid_notifier;
 import android.app.Activity;
 import android.content.Intent;
 
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +26,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +37,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.concurrent.ExecutionException;
 
-public class HospitalInformationActivity extends Activity {
+public class HospitalInformationActivity extends AppCompatActivity {
     // Log.d 용 태그
     private static String TAG = "HospitalInformationActivity";
 
@@ -55,12 +60,18 @@ public class HospitalInformationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hostpital_information);
 
+        //액션바 띄우기, 스타일 수정
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle("지역별 병원 정보");
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xFF46B7BD));
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         // 뷰 가져오기
         spin1 = (Spinner) findViewById(R.id.spinner);
         spin2 = (Spinner) findViewById(R.id.spinner2);
         searchBtn = (Button) findViewById(R.id.btn_refresh);
         hospitalList = (ListView) findViewById(R.id.hospitalList);
-        backBtn = (Button) findViewById(R.id.hospitalBackBtn);
         rbA0 = (RadioButton) findViewById(R.id.HA0);
         radioGroupHospital = (RadioGroup) findViewById(R.id.radioGroupHospital);
 
@@ -191,14 +202,16 @@ public class HospitalInformationActivity extends Activity {
 
             }
         });
+    }
 
-        // 뒤로가기 버튼
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+    //종료
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                super.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // 라디오 버튼에서 선택된 A0, 99, 97

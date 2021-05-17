@@ -8,25 +8,6 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/regionBackBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/back"
-            android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="지역별 확진자 현황"
-            android:textColor="@color/black"
-            android:gravity="center"
-            android:paddingRight="40dp"
-            android:textSize="30sp" />
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -50,12 +31,7 @@
                 android:orientation="vertical"
                 android:outlineSpotShadowColor="@color/black">
 
-                <TextView
-                    android:id="@+id/dateText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_x="12dp"
-                    android:text="0000년00월00일 기준" />
+
 
                 <LinearLayout
                     android:id="@+id/incheon_layout"
@@ -779,6 +755,14 @@
             </AbsoluteLayout>
         </FrameLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textSize="20dp"
+        android:text="0000년00월00일 기준" />
 
     <LinearLayout
         android:layout_width="match_parent"

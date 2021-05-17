@@ -5,21 +5,26 @@
 package kr.ac.kpu.covid_notifier;
 
 import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class InfectionByRegionActivity extends Activity {
+public class InfectionByRegionActivity extends AppCompatActivity {
     LinearLayout mapview;
     ImageView map;
     Button backBtn, syncBtn;
@@ -41,6 +46,13 @@ public class InfectionByRegionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infection_by_region);
+
+        //액션바 띄우기, 스타일 수정
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle("지역별 확진자 현황");
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xFF4A78BE));
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // 뷰 ID 가져오기
         setViewID();
@@ -80,14 +92,16 @@ public class InfectionByRegionActivity extends Activity {
 
         //최소 1회 강제 sync
         syncBtn.performClick();
+    }
 
-        //종료
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+    //종료
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                super.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // 다음 뷰의 Id를 가져옴
@@ -162,7 +176,6 @@ public class InfectionByRegionActivity extends Activity {
                 (TextView) findViewById(R.id.seoul_daily_confirmed)};
 
         mapview = (LinearLayout) findViewById(R.id.frame);
-        backBtn = (Button) findViewById(R.id.regionBackBtn);
         syncBtn = (Button) findViewById(R.id.syncBtn);
         map = (ImageView) findViewById(R.id.map);
     }

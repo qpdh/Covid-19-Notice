@@ -4,12 +4,15 @@
 
 package kr.ac.kpu.covid_notifier;
 
-import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -22,8 +25,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class InfectionByTotalActivity extends Activity {
-    Button backBtn;
+public class InfectionByTotalActivity extends AppCompatActivity {
     TextView daily_confirmed, daily_increse, dateset;
     BarChart chart;
 
@@ -37,8 +39,14 @@ public class InfectionByTotalActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infection_by_total);
 
+        //액션바 띄우기, 스타일 수정
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle("확진자 일일 현황");
+        actionBar.setBackgroundDrawable(new ColorDrawable(0xFF686AA2));
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         //정의
-        backBtn = (Button) findViewById(R.id.dailyBackBtn);
         daily_confirmed = (TextView) findViewById(R.id.total_daily_confirmed);
         daily_increse = (TextView) findViewById(R.id.daily_increse);
         dateset = (TextView) findViewById(R.id.datetoday);
@@ -63,15 +71,16 @@ public class InfectionByTotalActivity extends Activity {
             }
             BarChartGraph(labels, values);
         } catch (Exception e) {}
+    }
 
-
-        //종료
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+    //종료
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                super.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     //BarChart 삽입 메소드

@@ -34,31 +34,33 @@
                 android:layout_height="200dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/round_daily"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textSize="25dp"
                 android:textStyle="bold"
                 android:elevation="10dp"
                 android:layout_gravity="center"
-                android:text="전체 일일 현황"/>
+                android:text="확진자 일일 현황"/>
             <Button
                 android:id="@+id/regionBtn"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/round_region"
-                android:textColor="#FFFFFF"
-                android:textSize="20dp"
-                android:text="지역별 감염현황"/>
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:text="지역별 확진자 현황"/>
             <Button
                 android:id="@+id/hospitalBtn"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_margin="5dp"
                 android:layout_gravity="center"
+                android:textStyle="bold"
                 android:background="@drawable/round_hospital"
-                android:textColor="#505050"
-                android:textSize="20dp"
-                android:text="코로나19\n지역병원 정보"/>
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:text="지역별 병원 정보"/>
             <Button
                 android:id="@+id/newsBtn"
                 android:layout_width="300dp"
@@ -66,8 +68,9 @@
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:background="@drawable/round_news"
-                android:textColor="#505050"
-                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="25dp"
                 android:text="코로나19\n뉴스 정보"/>
         </LinearLayout>
     </HorizontalScrollView>
