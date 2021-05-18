@@ -37,6 +37,7 @@ public class InfectionByTotalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Total);
         setContentView(R.layout.activity_infection_by_total);
 
         //액션바 띄우기, 스타일 수정

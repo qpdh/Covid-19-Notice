@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,25 +25,27 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/map" />
 
-            <AbsoluteLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/incheon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:outlineSpotShadowColor="@color/black">
-
 
 
                 <LinearLayout
                     android:id="@+id/incheon_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="37dp"
-                    android:layout_y="76dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.11"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.24000001">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -82,7 +85,13 @@
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/seoul_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.51">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -117,12 +126,16 @@
                     android:id="@+id/seoul_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="140dp"
-                    android:layout_y="100dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/sejong_layout"
+                    app:layout_constraintEnd_toStartOf="@+id/gangwon_layout"
+                    app:layout_constraintHorizontal_bias="0.44"
+                    app:layout_constraintStart_toEndOf="@+id/incheon_layout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.93">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -157,12 +170,16 @@
                     android:id="@+id/gangwon_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="240dp"
-                    android:layout_y="60dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/daegu_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.37">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -197,12 +214,16 @@
                     android:id="@+id/chungbuk_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="217dp"
-                    android:layout_y="136dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/daejeon_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.68"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gangwon_layout"
+                    app:layout_constraintVertical_bias="0.62">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -237,12 +258,16 @@
                     android:id="@+id/sejong_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="115dp"
-                    android:layout_y="180dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/jeonbuk_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.08"
+                    app:layout_constraintStart_toEndOf="@+id/chungnam_layout"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.77">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -277,12 +302,16 @@
                     android:id="@+id/chungnam_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="27dp"
-                    android:layout_y="222dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/jeonnam_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.06"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/incheon_layout"
+                    app:layout_constraintVertical_bias="0.26999998">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -317,12 +346,16 @@
                     android:id="@+id/daejeon_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="188dp"
-                    android:layout_y="217dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/gyeongnam_layout"
+                    app:layout_constraintEnd_toStartOf="@+id/gyeongbuk_layout"
+                    app:layout_constraintHorizontal_bias="0.69"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.88">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -357,12 +390,14 @@
                     android:id="@+id/gyeongbuk_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="312dp"
-                    android:layout_y="182dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/ulsan_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.73">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -397,12 +432,16 @@
                     android:id="@+id/jeonbuk_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="118dp"
-                    android:layout_y="284dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/gwangju_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.33"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.95">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -437,12 +476,16 @@
                     android:id="@+id/daegu_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="262dp"
-                    android:layout_y="249dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.79"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.51">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -477,12 +520,16 @@
                     android:id="@+id/gyeongnam_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="197dp"
-                    android:layout_y="324dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.61"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.65999997">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -517,12 +564,16 @@
                     android:id="@+id/busan_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="276dp"
-                    android:layout_y="383dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.91"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ulsan_layout"
+                    app:layout_constraintVertical_bias="0.050000012">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -557,12 +608,14 @@
                     android:id="@+id/ulsan_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="320dp"
-                    android:layout_y="311dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.65">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -597,12 +650,16 @@
                     android:id="@+id/jeonnam_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="26dp"
-                    android:layout_y="409dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/busan_layout"
+                    app:layout_constraintHorizontal_bias="0.02"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.79">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -637,12 +694,16 @@
                     android:id="@+id/gwangju_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="117dp"
-                    android:layout_y="372dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/jeju_layout"
+                    app:layout_constraintEnd_toStartOf="@+id/quarantine_layout"
+                    app:layout_constraintHorizontal_bias="0.65"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.94">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -677,12 +738,16 @@
                     android:id="@+id/jeju_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="117dp"
-                    android:layout_y="461dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/quarantine_layout"
+                    app:layout_constraintHorizontal_bias="0.64"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.95">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -717,12 +782,16 @@
                     android:id="@+id/quarantine_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_x="226dp"
-                    android:layout_y="454dp"
                     android:background="@drawable/shadow"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingRight="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.72"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.93">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -752,7 +821,7 @@
                         android:text="(+000)"
                         android:textSize="15dp" />
                 </LinearLayout>
-            </AbsoluteLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
     </LinearLayout>
 

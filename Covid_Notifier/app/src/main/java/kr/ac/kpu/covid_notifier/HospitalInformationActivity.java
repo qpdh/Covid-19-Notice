@@ -58,6 +58,7 @@ public class HospitalInformationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_Hospital);
         setContentView(R.layout.activity_hostpital_information);
 
         //액션바 띄우기, 스타일 수정

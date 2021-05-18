@@ -6,24 +6,42 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
     Button dailyBtn, regionBtn, hospitalBtn, newsBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //액션바 숨기기
-        //ActionBar actionBar = getSupportActionBar();
-        //actionBar.hide();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         //정의
         dailyBtn = (Button)findViewById(R.id.dailyBtn);
         regionBtn = (Button)findViewById(R.id.regionBtn);
         hospitalBtn = (Button)findViewById(R.id.hospitalBtn);
         newsBtn = (Button)findViewById(R.id.newsBtn);
+
+        //버튼 크기 동적 변경
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        final float scale = getResources().getDisplayMetrics().density;
+        int getwidth = displayMetrics.widthPixels;
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                (int)(getwidth-(110*scale)+25),
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        dailyBtn.setLayoutParams(params);
+        regionBtn.setLayoutParams(params);
+        hospitalBtn.setLayoutParams(params);
+        newsBtn.setLayoutParams(params);
 
         //일일 확진자 현황 액티비티 실행
         dailyBtn.setOnClickListener(new View.OnClickListener() {

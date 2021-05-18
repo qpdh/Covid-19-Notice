@@ -60,7 +60,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@drawable/updown"/>
 
             <TextView
                 android:id="@+id/daily_increse"
