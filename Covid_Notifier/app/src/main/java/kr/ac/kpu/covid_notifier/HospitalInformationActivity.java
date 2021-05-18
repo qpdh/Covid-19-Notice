@@ -248,7 +248,7 @@ public class HospitalInformationActivity extends AppCompatActivity {
 
     // 스피너 목록 설정하는 메소드
     private void spinner() {
-        array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item);
+        array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
         array1.add("시/도");
         array1.addAll(sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
         //array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
@@ -266,13 +266,13 @@ public class HospitalInformationActivity extends AppCompatActivity {
                         Log.d(TAG, k);
                     }
 
-                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item);
+                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item);
                     array2.add("시/군/구");
                     array2.addAll(sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
                     //array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
                     spin2.setAdapter(array2);
                 } else {
-                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item);
+                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item);
                     array2.add("시/군/구");
                     spin2.setAdapter(array2);
                 }
