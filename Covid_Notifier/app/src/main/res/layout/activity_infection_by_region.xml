@@ -8,6 +8,14 @@
     android:padding="15dp"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textSize="20dp"
+        android:text="0000년00월00일 기준" />
+
     <LinearLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
@@ -34,12 +42,7 @@
 
                 <LinearLayout
                     android:id="@+id/incheon_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.11"
@@ -48,44 +51,26 @@
                     app:layout_constraintVertical_bias="0.24000001">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="인천"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000"/>
 
                     <TextView
                         android:id="@+id/incheon_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000"/>
 
                     <TextView
                         android:id="@+id/incheon_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/gyeonggi_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_x="150dp"
-                    android:layout_y="20dp"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/seoul_layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.47"
@@ -94,42 +79,26 @@
                     app:layout_constraintVertical_bias="0.51">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="경기"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gyeonggi_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gyeonggi_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/seoul_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/sejong_layout"
                     app:layout_constraintEnd_toStartOf="@+id/gangwon_layout"
                     app:layout_constraintHorizontal_bias="0.44"
@@ -138,42 +107,26 @@
                     app:layout_constraintVertical_bias="0.93">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="서울"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/seoul_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/seoul_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/gangwon_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/daegu_layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.8"
@@ -192,32 +145,20 @@
 
                     <TextView
                         android:id="@+id/gangwon_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gangwon_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/chungbuk_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/daejeon_layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.68"
@@ -226,42 +167,26 @@
                     app:layout_constraintVertical_bias="0.62">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="충북"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/chungbuk_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/chungbuk_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/sejong_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/jeonbuk_layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.08"
@@ -270,86 +195,54 @@
                     app:layout_constraintVertical_bias="0.77">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="세종"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/sejong_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/sejong_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/chungnam_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/jeonnam_layout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.06"
+                    app:layout_constraintHorizontal_bias="0.07"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/incheon_layout"
                     app:layout_constraintVertical_bias="0.26999998">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="충남"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/chungnam_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/chungnam_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/daejeon_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/gyeongnam_layout"
                     app:layout_constraintEnd_toStartOf="@+id/gyeongbuk_layout"
                     app:layout_constraintHorizontal_bias="0.69"
@@ -358,84 +251,52 @@
                     app:layout_constraintVertical_bias="0.88">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="대전"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/daejeon_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/daejeon_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/gyeongbuk_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/ulsan_layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.73">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="경북"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gyeongbuk_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gyeongbuk_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/jeonbuk_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/gwangju_layout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.33"
@@ -444,42 +305,26 @@
                     app:layout_constraintVertical_bias="0.95">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="전북"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/jeonbuk_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/jeonbuk_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/daegu_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.79"
@@ -488,42 +333,26 @@
                     app:layout_constraintVertical_bias="0.51">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="대구"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/daegu_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/daegu_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/gyeongnam_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.61"
@@ -532,42 +361,26 @@
                     app:layout_constraintVertical_bias="0.65999997">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="경남"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gyeongnam_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gyeongnam_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/busan_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.91"
@@ -576,128 +389,80 @@
                     app:layout_constraintVertical_bias="0.050000012">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="부산"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/busan_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/busan_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ulsan_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.65">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="울산"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/ulsan_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/wulsan_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/jeonnam_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/busan_layout"
-                    app:layout_constraintHorizontal_bias="0.02"
+                    app:layout_constraintHorizontal_bias="0.03"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.79">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="전남"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/jeonnam_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/jeonnam_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/gwangju_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toTopOf="@+id/jeju_layout"
                     app:layout_constraintEnd_toStartOf="@+id/quarantine_layout"
                     app:layout_constraintHorizontal_bias="0.65"
@@ -706,42 +471,26 @@
                     app:layout_constraintVertical_bias="0.94">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="광주"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gwangju_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/gwangju_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/jeju_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/quarantine_layout"
                     app:layout_constraintHorizontal_bias="0.64"
@@ -750,42 +499,26 @@
                     app:layout_constraintVertical_bias="0.95">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="제주"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/jeju_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/jeju_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/quarantine_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shadow"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    style="@style/CustomLayout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.72"
@@ -794,44 +527,25 @@
                     app:layout_constraintVertical_bias="0.93">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="검역"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/quarantine_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="00000"
-                        android:textColor="#000000"
-                        android:textSize="15dp" />
+                        android:textColor="#000000" />
 
                     <TextView
                         android:id="@+id/quarantine_daily_confirmed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingRight="2dp"
+                        style="@style/CustomTextView"
                         android:text="(+000)"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/dateText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:textSize="20dp"
-        android:text="0000년00월00일 기준" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -849,6 +563,4 @@
             android:text="SYNC" />
 
     </LinearLayout>
-
-
 </LinearLayout>
