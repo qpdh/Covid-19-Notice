@@ -43,7 +43,6 @@ public class InfectionByTotalActivity extends AppCompatActivity {
         //액션바 띄우기, 스타일 수정
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("확진자 일일 현황");
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFF686AA2));
         actionBar.setDisplayHomeAsUpEnabled(true);
 

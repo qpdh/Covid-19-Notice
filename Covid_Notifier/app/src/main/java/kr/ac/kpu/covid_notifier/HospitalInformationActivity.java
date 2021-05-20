@@ -64,7 +64,6 @@ public class HospitalInformationActivity extends AppCompatActivity {
         //액션바 띄우기, 스타일 수정
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("지역별 병원 정보");
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFF46B7BD));
         actionBar.setDisplayHomeAsUpEnabled(true);
 

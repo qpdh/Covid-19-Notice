@@ -51,7 +51,6 @@ public class InfectionByRegionActivity extends AppCompatActivity {
         //액션바 띄우기, 스타일 수정
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle("지역별 확진자 현황");
         actionBar.setBackgroundDrawable(new ColorDrawable(0xFF4A78BE));
         actionBar.setDisplayHomeAsUpEnabled(true);
 
