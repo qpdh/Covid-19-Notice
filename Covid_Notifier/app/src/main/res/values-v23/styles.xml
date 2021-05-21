@@ -3,13 +3,16 @@
     <!-- 확진자 일일 현황 상단바 색상 변경 -->
     <style name="Theme.Total" parent="Theme.CovidNotifier">
         <item name="android:statusBarColor">#E0686AA2</item>
+        <item name="homeAsUpIndicator">@drawable/back</item>
     </style>
     <!-- 지역별 확진자 현황 상단바 색상 변경 -->
     <style name="Theme.Region" parent="Theme.CovidNotifier">
         <item name="android:statusBarColor">#E04A78BE</item>
+        <item name="homeAsUpIndicator">@drawable/back</item>
     </style>
     <!-- 지역별 병원 정보 상단바 색상 변경 -->
     <style name="Theme.Hospital" parent="Theme.CovidNotifier">
         <item name="android:statusBarColor">#E046B7BD</item>
+        <item name="homeAsUpIndicator">@drawable/back</item>
     </style>
 </resources>
