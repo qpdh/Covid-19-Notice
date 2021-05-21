@@ -9,8 +9,10 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -29,13 +31,16 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
     public HospitalInformationAPI() {
         URL url = null;
         try {
-            String ServiceKey = "re%2B4ZbFs0erT%2Bg5bW2VLp2lNnYogTrEt0R7QKSYaDpZh4g1hbkj8kgaNSL7JTXaXugynM9f8TSqjeODqtP9Dow%3D%3D";
-            String url2 = "http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList?serviceKey="
-                    + ServiceKey + "&pageNo=1&numOfRows=1200" ;
+            String ServiceKey = "rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D";
+            StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList"); /*URL*/
+            urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + ServiceKey); /*Service Key*/
+            urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
+            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("1200", "UTF-8")); /*한 페이지 결과 수*/
 
-            url = new URL(url2);
+            url = new URL(urlBuilder.toString());
 
-        } catch (MalformedURLException e) {
+        } catch (MalformedURLException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         this.url = url.toString();
