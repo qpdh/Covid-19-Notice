@@ -25,6 +25,7 @@ public class InfectionByRegionAPI extends AsyncTask<Void, Void, ArrayList<Infect
     String startCreateDt, endCreateDt;  //파싱 시작일과 종료일
     ArrayList<InfectionByRegion> rdata = new ArrayList<InfectionByRegion>();    //지역별 확진자 현황을 담을 ArrayList
     DecimalFormat dc = new DecimalFormat("###,###,###");    //숫자 자릿 수 표시
+    final String TAG = "InfectionByRegionAPI";    // Log.d 용 태그
 
     //클래스 생성자
     //url 지정 및 기준날짜 설정(앱 실행 날짜 기준)
@@ -37,12 +38,12 @@ public class InfectionByRegionAPI extends AsyncTask<Void, Void, ArrayList<Infect
         try {
             String ServiceKey = "rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D";
             StringBuilder urlBuilder = new StringBuilder("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson"); /*URL*/
-            urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + ServiceKey); /*Service Key*/
-            urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
-            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
-            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("40", "UTF-8")); /*한 페이지 결과 수*/
-            urlBuilder.append("&" + URLEncoder.encode("startCreateDt","UTF-8") + "=" + URLEncoder.encode(startCreateDt, "UTF-8")); /*검색할 생성일 범위의 시작*/
-            urlBuilder.append("&" + URLEncoder.encode("endCreateDt","UTF-8") + "=" + URLEncoder.encode(endCreateDt, "UTF-8")); /*검색할 생성일 범위의 종료*/
+            urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + ServiceKey); /*Service Key*/
+            urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
+            urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("40", "UTF-8")); /*한 페이지 결과 수*/
+            urlBuilder.append("&" + URLEncoder.encode("startCreateDt", "UTF-8") + "=" + URLEncoder.encode(startCreateDt, "UTF-8")); /*검색할 생성일 범위의 시작*/
+            urlBuilder.append("&" + URLEncoder.encode("endCreateDt", "UTF-8") + "=" + URLEncoder.encode(endCreateDt, "UTF-8")); /*검색할 생성일 범위의 종료*/
 
             url = new URL(urlBuilder.toString());
 
@@ -72,7 +73,7 @@ public class InfectionByRegionAPI extends AsyncTask<Void, Void, ArrayList<Infect
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.d("API", "IOException");
+            Log.d(TAG, "IOException");
         }
 
         NodeList nList = doc.getElementsByTagName("item");

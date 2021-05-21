@@ -26,6 +26,8 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
     ArrayList<HospitalInformation> C97 = new ArrayList<HospitalInformation>();  //코드 97에 해당하는 기관의 정보를 저장하는 ArrayList
     ArrayList<HospitalInformation> C99 = new ArrayList<HospitalInformation>();  //코드 99에 해당하는 기관의 정보를 저장하는 ArrayList
 
+    final String TAG = "HospitalInformationAPI";    // Log.d 용 태그
+
     //클래스 생성자
     //url 지정 및 기관 리스트 조회
     public HospitalInformationAPI() {
@@ -33,10 +35,10 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
         try {
             String ServiceKey = "rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D";
             StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList"); /*URL*/
-            urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + ServiceKey); /*Service Key*/
-            urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
-            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
-            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("1200", "UTF-8")); /*한 페이지 결과 수*/
+            urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + ServiceKey); /*Service Key*/
+            urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
+            urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("1200", "UTF-8")); /*한 페이지 결과 수*/
 
             url = new URL(urlBuilder.toString());
 
@@ -49,7 +51,7 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
     //쓰레드 백그라운드 실행 동작 함수
     //기관 종류에 해당하는 지역별 기관 각 ArrayList에 저장
     @Override
-    protected ArrayList<ArrayList<HospitalInformation>> doInBackground(Void ... voids) {
+    protected ArrayList<ArrayList<HospitalInformation>> doInBackground(Void... voids) {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
         Document doc = null;
@@ -59,13 +61,8 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
             dBuilder = dbFactory.newDocumentBuilder();
             doc = dBuilder.parse(url);
             doc.getDocumentElement().normalize();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d("API", "IOException");
+        } catch (Exception e) {
+            Log.d(TAG, "IOException");
         }
 
         NodeList nList = doc.getElementsByTagName("item");
@@ -81,7 +78,7 @@ public class HospitalInformationAPI extends AsyncTask<Void, Void, ArrayList<Arra
             String telno = getTagValue("telno", eElement);      //전화번호
             String yadmNm = getTagValue("yadmNm", eElement);    //기관명
 
-            switch (code){
+            switch (code) {
                 case "A0":
                     CA0.add(new HospitalInformation(sidoNm, sgguNm, telno, yadmNm));
                     break;

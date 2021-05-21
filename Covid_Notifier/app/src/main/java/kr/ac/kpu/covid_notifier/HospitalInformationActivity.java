@@ -4,7 +4,6 @@
 
 package kr.ac.kpu.covid_notifier;
 
-import android.app.Activity;
 import android.content.Intent;
 
 import android.graphics.drawable.ColorDrawable;
@@ -38,12 +37,11 @@ import java.util.TreeSet;
 import java.util.concurrent.ExecutionException;
 
 public class HospitalInformationActivity extends AppCompatActivity {
-    // Log.d 용 태그
-    private static String TAG = "HospitalInformationActivity";
+    private static String TAG = "HospitalInformationActivity";    // Log.d 용 태그
 
-    Button searchBtn, backBtn;
+    Button searchBtn;
     Spinner spin1, spin2;
-    ArrayAdapter<String> array1, array2;
+    ArrayAdapter<String> arraySido, arraySigun;
     ListView hospitalList;
     RadioButton rbA0;
     RadioGroup radioGroupHospital;
@@ -68,54 +66,39 @@ public class HospitalInformationActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // 뷰 가져오기
-        spin1 = (Spinner) findViewById(R.id.spinner);
-        spin2 = (Spinner) findViewById(R.id.spinner2);
-        searchBtn = (Button) findViewById(R.id.btn_refresh);
-        hospitalList = (ListView) findViewById(R.id.hospitalList);
-        rbA0 = (RadioButton) findViewById(R.id.HA0);
-        radioGroupHospital = (RadioGroup) findViewById(R.id.radioGroupHospital);
-
-        // 스피너 너비 조정
-        try {
-            Field popup = Spinner.class.getDeclaredField("mPopup");
-            popup.setAccessible(true);
-
-            android.widget.ListPopupWindow popupWindow = (android.widget.ListPopupWindow) popup.get(spin1);
-
-            popupWindow.setHeight(600);
-
-            popupWindow = (android.widget.ListPopupWindow) popup.get(spin2);
-            popupWindow.setHeight(400);
-
-        } catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
-        }
-
+        findView();
 
         // 데이터 가져오기 쓰레드 생성
         AsyncTask<Void, Void, ArrayList<ArrayList<HospitalInformation>>> thread = data.execute();
 
         try {
             lable = thread.get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
         }
 
         // 리스너 추가하는 메소드
-
-        setActionListeners();
+        setListener();
 
         // A0 선택되고 시작
         rbA0.setChecked(true);
 
     }
 
+    // 뷰 가져오는 메소드
+    private void findView() {
+        spin1 = (Spinner) findViewById(R.id.spinner);
+        spin2 = (Spinner) findViewById(R.id.spinner2);
+        searchBtn = (Button) findViewById(R.id.btn_refresh);
+        hospitalList = (ListView) findViewById(R.id.hospitalList);
+        rbA0 = (RadioButton) findViewById(R.id.HA0);
+        radioGroupHospital = (RadioGroup) findViewById(R.id.radioGroupHospital);
+    }
+
     // 리스너 추가하는 메소드
     // radioGroupHospital
     // searchBtn
     // backBtn
-    private void setActionListeners() {
+    private void setListener() {
         // 라디오 그룹 버튼이 변경되면 데이터 불러오기
         radioGroupHospital.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -155,13 +138,13 @@ public class HospitalInformationActivity extends AppCompatActivity {
                     String spin1Item = spin1.getSelectedItem().toString();
                     String spin2Item = spin2.getSelectedItem().toString();
 
-                    if(spin1Item.equals("시/도")){
-                        Toast.makeText(getApplicationContext(),"시/도 를 선택해주세요.",Toast.LENGTH_SHORT).show();
+                    if (spin1Item.equals("시/도")) {
+                        Toast.makeText(getApplicationContext(), "시/도 를 선택해주세요.", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
-                    if(spin2Item.equals("시/군/구")){
-                        Toast.makeText(getApplicationContext(),"시/군/구 를 선택해주세요.",Toast.LENGTH_SHORT).show();
+                    if (spin2Item.equals("시/군/구")) {
+                        Toast.makeText(getApplicationContext(), "시/군/구 를 선택해주세요.", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
@@ -198,15 +181,16 @@ public class HospitalInformationActivity extends AppCompatActivity {
                         }
                     });
 
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
 
             }
         });
     }
 
     //종료
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 super.finish();
                 return true;
@@ -248,38 +232,37 @@ public class HospitalInformationActivity extends AppCompatActivity {
 
     // 스피너 목록 설정하는 메소드
     private void spinner() {
-        array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
-        array1.add("시/도");
-        array1.addAll(sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
-        //array1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
+        arraySido = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+        arraySido.add("시/도");
+        arraySido.addAll(sgguNmDict.keySet().toArray(new String[sgguNmDict.size()]));
 
-        spin1.setAdapter(array1);
+        spin1.setAdapter(arraySido);
 
         spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i > 0) {
-                    String sidoNm = array1.getItem(i);
+                    String sidoNm = arraySido.getItem(i);
                     Log.d(TAG, sidoNm);
                     for (String k : sgguNmDict.get(sidoNm)) {
                         Log.d(TAG, k);
                     }
 
-                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item);
-                    array2.add("시/군/구");
-                    array2.addAll(sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
-                    //array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
-                    spin2.setAdapter(array2);
+                    arraySigun = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item);
+                    arraySigun.add("시/군/구");
+                    arraySigun.addAll(sgguNmDict.get(sidoNm).toArray(new String[sgguNmDict.get(sidoNm).size()]));
+                    spin2.setAdapter(arraySigun);
                 } else {
-                    array2 = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item);
-                    array2.add("시/군/구");
-                    spin2.setAdapter(array2);
+                    arraySigun = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item);
+                    arraySigun.add("시/군/구");
+                    spin2.setAdapter(arraySigun);
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {}
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
         });
     }
 }

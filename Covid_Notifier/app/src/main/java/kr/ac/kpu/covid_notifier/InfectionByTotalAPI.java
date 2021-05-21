@@ -27,17 +27,18 @@ public class InfectionByTotalAPI extends AsyncTask<Void, Void, ArrayList<Infecti
     private final String url;   //파싱할 url
     String startCreateDt, endCreateDt;  //파싱 시작일과 종료일
     ArrayList<InfectionByTotal> rdata = new ArrayList<InfectionByTotal>();  //해당 날짜 확진자 현황을 담을 ArrayList
+    final String TAG = "InfectionByTotalAPI";    // Log.d 용 태그
 
     //클래스 생성자
     //url 지정 및 기준날짜 설정(앱 실행 날짜 기준 7일)
-    public InfectionByTotalAPI(){
+    public InfectionByTotalAPI() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
 
         //날짜 1주일 설정
         endCreateDt = sdf.format(cal.getTime());
-        cal.add(Calendar.DATE,-7);
+        cal.add(Calendar.DATE, -7);
         startCreateDt = sdf.format(cal.getTime());
 
         //url 지정
@@ -45,12 +46,12 @@ public class InfectionByTotalAPI extends AsyncTask<Void, Void, ArrayList<Infecti
         try {
             String ServiceKey = "rl%2B8bqQgAXlgml1MRoJIqGc1YcMKT31NQdmV2graSOPOnxBBdSAAtnKp%2F7XR54yLXVpvKhTnv7UhUw%2FTBjqw9Q%3D%3D";
             StringBuilder urlBuilder = new StringBuilder("http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson"); /*URL*/
-            urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + ServiceKey); /*Service Key*/
-            urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
-            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
-            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("40", "UTF-8")); /*한 페이지 결과 수*/
-            urlBuilder.append("&" + URLEncoder.encode("startCreateDt","UTF-8") + "=" + URLEncoder.encode(startCreateDt, "UTF-8")); /*검색할 생성일 범위의 시작*/
-            urlBuilder.append("&" + URLEncoder.encode("endCreateDt","UTF-8") + "=" + URLEncoder.encode(endCreateDt, "UTF-8")); /*검색할 생성일 범위의 종료*/
+            urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + ServiceKey); /*Service Key*/
+            urlBuilder.append("&" + URLEncoder.encode("ServiceKey", "UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
+            urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("40", "UTF-8")); /*한 페이지 결과 수*/
+            urlBuilder.append("&" + URLEncoder.encode("startCreateDt", "UTF-8") + "=" + URLEncoder.encode(startCreateDt, "UTF-8")); /*검색할 생성일 범위의 시작*/
+            urlBuilder.append("&" + URLEncoder.encode("endCreateDt", "UTF-8") + "=" + URLEncoder.encode(endCreateDt, "UTF-8")); /*검색할 생성일 범위의 종료*/
 
             url = new URL(urlBuilder.toString());
 
@@ -63,7 +64,7 @@ public class InfectionByTotalAPI extends AsyncTask<Void, Void, ArrayList<Infecti
     //쓰레드 백그라운드 실행 동작
     //해당 날짜 확진자 현황 ArrayList에 저장
     @Override
-    protected ArrayList<InfectionByTotal> doInBackground(Void ...voids){
+    protected ArrayList<InfectionByTotal> doInBackground(Void... voids) {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
         Document doc = null;
@@ -79,7 +80,7 @@ public class InfectionByTotalAPI extends AsyncTask<Void, Void, ArrayList<Infecti
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            Log.d("API", "IOException");
+            Log.d(TAG, "IOException");
         }
 
         NodeList nList = doc.getElementsByTagName("item");

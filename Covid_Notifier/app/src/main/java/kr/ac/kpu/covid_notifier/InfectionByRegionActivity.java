@@ -4,11 +4,9 @@
 
 package kr.ac.kpu.covid_notifier;
 
-import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -54,7 +52,7 @@ public class InfectionByRegionActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // 뷰 ID 가져오기
-        setViewID();
+        findView();
 
         // 지역별 감염 현황 값 가져오기
         syncBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +77,8 @@ public class InfectionByRegionActivity extends AppCompatActivity {
     }
 
     //종료
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 super.finish();
                 return true;
@@ -95,7 +93,7 @@ public class InfectionByRegionActivity extends AppCompatActivity {
     // TextView dateText;
     // TextView total_confirmed[];
     // TextView daily_confirmed[];
-    private void setViewID() {
+    private void findView() {
         dateText = (TextView) findViewById(R.id.dateText);
         //정의
         total_confirmed = new TextView[]{
