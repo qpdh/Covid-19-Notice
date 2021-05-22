@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -45,6 +46,7 @@ public class HospitalInformationActivity extends AppCompatActivity {
     ListView hospitalList;
     RadioButton rbA0;
     RadioGroup radioGroupHospital;
+    TextView source;
 
     HashMap<HashSet<String>, ArrayList<HospitalInformation>> hospitalInformationDict;
 
@@ -92,6 +94,7 @@ public class HospitalInformationActivity extends AppCompatActivity {
         hospitalList = (ListView) findViewById(R.id.hospitalList);
         rbA0 = (RadioButton) findViewById(R.id.HA0);
         radioGroupHospital = (RadioGroup) findViewById(R.id.radioGroupHospital);
+        source = (TextView) findViewById(R.id.source);
     }
 
     // 리스너 추가하는 메소드
@@ -186,6 +189,8 @@ public class HospitalInformationActivity extends AppCompatActivity {
 
             }
         });
+
+        //소스 링크 열기
     }
 
     //종료

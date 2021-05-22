@@ -68,13 +68,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:layout_marginLeft="3dp">
 
                         <Spinner
                             android:id="@+id/spinner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.5" />
+                            android:layout_weight="0.5"/>
 
                         <Spinner
                             android:id="@+id/spinner2"
@@ -99,12 +100,27 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        android:orientation="vertical"
         android:layout_weight="1"
         android:background="@drawable/sheet_style">
         <!-- 보건소 리스트 삽입 -->
         <ListView
             android:id="@+id/hospitalList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent"
+            android:layout_weight="1"></ListView>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
+        android:text="Source: "
+        android:textSize="12dp"/>
+    <TextView
+        android:id="@+id/source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="@string/data"
+        android:textSize="11dp"/>
 </LinearLayout>

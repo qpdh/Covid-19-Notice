@@ -3,5 +3,6 @@
     <string name="total">확진자 일일 현황</string>
     <string name="region">지역별 확진자 현황</string>
     <string name="hospital">지역별 병원 정보</string>
+    <string name="data">https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15043078</string>
 </resources>
 

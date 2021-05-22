@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         final float scale = getResources().getDisplayMetrics().density;
         int getwidth = displayMetrics.widthPixels;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                (int)(getwidth-(110*scale)+30),
+                (int)(getwidth-(110*scale)),
                 ViewGroup.LayoutParams.MATCH_PARENT);
         dailyBtn.setLayoutParams(params);
         regionBtn.setLayoutParams(params);
