@@ -1,0 +1,4 @@
+#Mon May 24 00:46:46 KST 2021
+base.0=D\:\\GitHub\\MobileProgramming_TeamProject_3Team\\Covid_Notifier\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
