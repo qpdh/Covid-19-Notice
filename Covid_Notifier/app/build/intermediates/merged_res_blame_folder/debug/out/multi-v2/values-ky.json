@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\GitHub\\MobileProgramming_TeamProject_3Team\\Covid_Notifier\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ky\\values-ky.xml",
+            "outputFile": "C:\\Users\\nerb0\\Desktop\\Covid_Notifier\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ky\\values-ky.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\베오\\.gradle\\caches\\transforms-2\\files-2.1\\c560b8721f05ca12656603dd382025ab\\core-1.3.1\\res\\values-ky\\values-ky.xml",
+                    "source": "C:\\Users\\nerb0\\.gradle\\caches\\transforms-2\\files-2.1\\c560b8721f05ca12656603dd382025ab\\core-1.3.1\\res\\values-ky\\values-ky.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\베오\\.gradle\\caches\\transforms-2\\files-2.1\\a8a4fd2b2c3909bfe71257b0d5515dad\\material-1.3.0\\res\\values-ky\\values-ky.xml",
+                    "source": "C:\\Users\\nerb0\\.gradle\\caches\\transforms-2\\files-2.1\\a8a4fd2b2c3909bfe71257b0d5515dad\\material-1.3.0\\res\\values-ky\\values-ky.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\베오\\.gradle\\caches\\transforms-2\\files-2.1\\4f9c7f78c15bb692cf0895b881aafbad\\appcompat-1.2.0\\res\\values-ky\\values-ky.xml",
+                    "source": "C:\\Users\\nerb0\\.gradle\\caches\\transforms-2\\files-2.1\\4f9c7f78c15bb692cf0895b881aafbad\\appcompat-1.2.0\\res\\values-ky\\values-ky.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

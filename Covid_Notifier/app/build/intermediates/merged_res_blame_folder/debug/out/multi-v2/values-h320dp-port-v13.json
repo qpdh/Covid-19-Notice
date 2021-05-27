@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\GitHub\\MobileProgramming_TeamProject_3Team\\Covid_Notifier\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+            "outputFile": "C:\\Users\\nerb0\\Desktop\\Covid_Notifier\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\베오\\.gradle\\caches\\transforms-2\\files-2.1\\a8a4fd2b2c3909bfe71257b0d5515dad\\material-1.3.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "source": "C:\\Users\\nerb0\\.gradle\\caches\\transforms-2\\files-2.1\\a8a4fd2b2c3909bfe71257b0d5515dad\\material-1.3.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

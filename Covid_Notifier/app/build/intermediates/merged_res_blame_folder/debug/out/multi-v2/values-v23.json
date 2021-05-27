@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\GitHub\\MobileProgramming_TeamProject_3Team\\Covid_Notifier\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "C:\\Users\\nerb0\\Desktop\\Covid_Notifier\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\베오\\.gradle\\caches\\transforms-2\\files-2.1\\4f9c7f78c15bb692cf0895b881aafbad\\appcompat-1.2.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\nerb0\\.gradle\\caches\\transforms-2\\files-2.1\\4f9c7f78c15bb692cf0895b881aafbad\\appcompat-1.2.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -15,26 +15,26 @@
                     }
                 },
                 {
-                    "source": "D:\\GitHub\\MobileProgramming_TeamProject_3Team\\Covid_Notifier\\app\\src\\main\\res\\values-v23\\styles.xml",
+                    "source": "C:\\Users\\nerb0\\.gradle\\caches\\transforms-2\\files-2.1\\a8a4fd2b2c3909bfe71257b0d5515dad\\material-1.3.0\\res\\values-v23\\values-v23.xml",
                     "from": {
-                        "startLines": "13,8,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "559,325,91",
-                        "endLines": "16,11,6",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "755,519,284"
+                        "startLines": "2,6",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,320",
+                        "endLines": "5,9",
+                        "endColumns": "10,10",
+                        "endOffsets": "315,588"
                     },
                     "to": {
-                        "startLines": "53,57,61",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "3674,3872,4068",
-                        "endLines": "56,60,64",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "3867,4063,4258"
+                        "startLines": "65,69",
+                        "startColumns": "4,4",
+                        "startOffsets": "4263,4528",
+                        "endLines": "68,72",
+                        "endColumns": "10,10",
+                        "endOffsets": "4523,4796"
                     }
                 },
                 {
-                    "source": "C:\\Users\\베오\\.gradle\\caches\\transforms-2\\files-2.1\\f52122426ed85128097908a2e58f6328\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\nerb0\\.gradle\\caches\\transforms-2\\files-2.1\\f52122426ed85128097908a2e58f6328\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -53,22 +53,22 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\베오\\.gradle\\caches\\transforms-2\\files-2.1\\a8a4fd2b2c3909bfe71257b0d5515dad\\material-1.3.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\nerb0\\Desktop\\Covid_Notifier\\app\\src\\main\\res\\values-v23\\styles.xml",
                     "from": {
-                        "startLines": "2,6",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,320",
-                        "endLines": "5,9",
-                        "endColumns": "10,10",
-                        "endOffsets": "315,588"
+                        "startLines": "13,8,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "559,325,91",
+                        "endLines": "16,11,6",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "755,519,284"
                     },
                     "to": {
-                        "startLines": "65,69",
-                        "startColumns": "4,4",
-                        "startOffsets": "4263,4528",
-                        "endLines": "68,72",
-                        "endColumns": "10,10",
-                        "endOffsets": "4523,4796"
+                        "startLines": "53,57,61",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "3674,3872,4068",
+                        "endLines": "56,60,64",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "3867,4063,4258"
                     }
                 }
             ]
