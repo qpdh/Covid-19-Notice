@@ -45,9 +45,16 @@ COVID-19 감염자 데이터 그래프 그리기
 	3. 지역 별 예방접종센터 주소 출력 (라디오버튼 지역 선택 -> 해당 주소 출력)
 		시도, 시군 구 까지 입력을 받은 뒤 해당하는 주소 출력
 
+![image](https://user-images.githubusercontent.com/74190329/217275931-02bfd1fc-003c-4ff9-a14b-5c940c19f33a.png)
 
+![image](https://user-images.githubusercontent.com/74190329/217275958-479a0a3d-717b-4539-8411-cda8ab761da4.png)
 
+![image](https://user-images.githubusercontent.com/74190329/217275978-d59f8370-fa53-4028-9ef7-d443c19802a7.png)
 
+![image](https://user-images.githubusercontent.com/74190329/217275895-608b3525-f6bd-4a39-b11e-f8256cd31edc.png)
 
+![image](https://user-images.githubusercontent.com/74190329/217276054-4f323234-a7d0-4353-831f-123ec52d973f.png)
 
+![image](https://user-images.githubusercontent.com/74190329/217276107-d17091dc-ba14-467e-99ec-340b9efcf74b.png)
 
+![image](https://user-images.githubusercontent.com/74190329/217276174-d209204b-2869-4c7f-8da6-f89664f8ba39.png)
