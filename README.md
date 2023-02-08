@@ -1,4 +1,4 @@
-# MobileProgramming_TeamProject_3Team
+# Covid-19 Notice
 
 김동현
 박상문
